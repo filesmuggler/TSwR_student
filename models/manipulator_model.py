@@ -16,6 +16,9 @@ class ManiuplatorModel:
         self.r3 = 0.01
         self.I_3 = 2. / 5 * self.m3 * self.r3 ** 2
 
+        self.alfa = self.m1 * self.r1 ** 2 + self.I_1 + self.m2 * (self.l1 ** 2 + self.r2 ** 2) + self. I_2
+        self.beta = self.m2 * self.l1 * self.r2
+        self.gamma = self.m2 * self.r2 ** 2 + self.I_2
     def M(self, x):
         """
         Please implement the calculation of the mass matrix, according to the model derived in the exercise
@@ -31,3 +34,7 @@ class ManiuplatorModel:
         """
         q1, q2, q1_dot, q2_dot = x
         return NotImplementedError()
+
+    def x_dot(self):
+        # TODO zeby mma controller mogl uzywac choose model zwracaj xdot
+        pass

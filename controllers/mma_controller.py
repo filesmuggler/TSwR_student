@@ -1,7 +1,5 @@
 import numpy as np
-from models.free_model import FreeModel
 from .controller import Controller
-from models.ideal_model import IdealModel
 
 
 class MMAController(Controller):
