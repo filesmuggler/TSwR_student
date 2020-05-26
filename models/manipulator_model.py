@@ -26,7 +26,14 @@ class ManiuplatorModel:
         """
         q1, q2, q1_dot, q2_dot = x
 
-        return NotImplementedError()
+        m11 = self.alfa + 2*self.beta*np.cos(q2)
+        m12 = self.gamma + self.beta*np.cos(q2)
+        m21 = self.gamma + self.beta*np.cos(q2)
+        m22 = self.gamma
+
+        M = np.array([[m11,m12],[m21,m22]])
+
+        return M
 
     def C(self, x):
         """
