@@ -25,6 +25,7 @@ class ManiuplatorModel:
         (2DoF planar manipulator with the object at the tip)
         """
         q1, q2, q1_dot, q2_dot = x
+
         return NotImplementedError()
 
     def C(self, x):
@@ -33,7 +34,12 @@ class ManiuplatorModel:
         in the exercise (2DoF planar manipulator with the object at the tip)
         """
         q1, q2, q1_dot, q2_dot = x
-        return NotImplementedError()
+        c11 = - self.beta * np.sin(q2) * q2_dot
+        c12 = - self.beta * np.sin(q2) * (q1_dot + q2_dot)
+        c21 = self.beta * np.sin(q2) * q1_dot
+        c22 = 0
+        C = np.array([[c11, c12], [c21, c22]])
+        return C
 
     def x_dot(self):
         # TODO zeby mma controller mogl uzywac choose model zwracaj xdot
