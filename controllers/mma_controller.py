@@ -29,6 +29,8 @@ class MMAController(Controller):
         print("\nchosen model: ", self.i, "\n")
 
 
+    # TODO: ask about situations when it does not adapt quick enough? sometimes perfect, sometimes not with poly trajectory!!!
+
     def calculate_control(self, x, q_d, q_d_dot, q_d_ddot):
 
         q_dot = x[2:, np.newaxis]

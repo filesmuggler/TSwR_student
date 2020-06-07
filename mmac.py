@@ -15,7 +15,7 @@ from trajectory_generators.poly3 import Poly3
 
 Tp = 0.01
 start = 0
-end = 10
+end = 5
 t = np.linspace(start, end, int((end - start) / Tp))
 manipulator = MMPlanarManipulator2DOF(Tp)
 
@@ -28,8 +28,8 @@ controller = MMAController(Tp)
 Here you have some trajectory generators. You can use them to check your implementations.
 """
 # traj_gen = ConstantTorque(np.array([0., 1.0])[:, np.newaxis])
-traj_gen = Sinusoidal(np.array([0., 1.]), np.array([2., 2.]), np.array([0., 0.]))
-#traj_gen = Poly3(np.array([0., 0.]), np.array([pi/4, pi/6]), end)
+# traj_gen = Sinusoidal(np.array([0., 1.]), np.array([2., 2.]), np.array([0., 0.]))
+traj_gen = Poly3(np.array([0., 0.]), np.array([pi/4, pi/6]), end)
 
 
 ctrl = []
@@ -50,7 +50,7 @@ def system(x, t):
 
 
 q_d, q_d_dot, q_d_ddot = traj_gen.generate(0.)
-x = odeint(system, np.concatenate([q_d, q_d_dot], 0), t)
+x = odeint(system, np.concatenate([q_d, q_d_dot], 0), t, hmax=0.1)
 manipulator.plot(x)
 
 """
