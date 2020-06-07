@@ -15,5 +15,3 @@ class FeedbackLinearizationController(Controller):
         '''hello'''
         q_dot = x[2:, np.newaxis]
         return self.model.M(x) @ v + self.model.C(x) @ q_dot
-
-
