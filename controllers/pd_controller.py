@@ -9,5 +9,7 @@ class PDDecentralizedController(Controller):
 
     def calculate_control(self, q, q_dot, q_d, q_d_dot, q_d_ddot):
         ### TODO: Please implement me
-        u = None
+        e = q_d - q
+        e_dot = q_d_dot - q_dot
+        u = self.kp * e + self.kd * e_dot
         return u
