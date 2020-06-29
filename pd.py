@@ -17,10 +17,10 @@ end = 3
 t = np.linspace(start, end, int((end - start) / Tp))
 manipulator = PlanarManipulator2DOF(Tp)
 
-kp1 = 6.2
+kp1 = 8.2
 kp2 = 6.5
-kd1 = 1.5
-kd2 = 1.8
+kd1 = 12.5
+kd2 = 10.8
 fl_controller = PDDecentralizedController(kp1, kd1)
 sl_controller = PDDecentralizedController(kp2, kd2)
 traj_gen = Poly3(np.array([0., 0.]), np.array([pi/4, pi/6]), end)
