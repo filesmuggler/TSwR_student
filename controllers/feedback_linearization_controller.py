@@ -5,11 +5,11 @@ from .controller import Controller
 
 class FeedbackLinearizationController(Controller):
     def __init__(self, Tp):
-        self.model = ManiuplatorModel(Tp, 0.17, 0.1)
-        self.k_p = [[-1.3, 0.],
-                    [0., 0.7]]
-        self.k_d = [[0.7, 0.],
-                    [0., 2]]
+        self.model = ManiuplatorModel(Tp, 4.0, 1.0)
+        self.k_p = [[-3, 0.],
+                    [0., -0.7]]
+        self.k_d = [[-0.7, 0.],
+                    [0., -2]]
 
     def calculate_control(self, x, q_d, q_d_dot, q_d_ddot):
         """

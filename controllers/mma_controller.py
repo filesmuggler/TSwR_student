@@ -10,10 +10,10 @@ class MMAController(Controller):
         self.models = [ManiuplatorModel(Tp, 0.1, 0.05),
                        ManiuplatorModel(Tp, 0.01, 0.01),
                        ManiuplatorModel(Tp, 1., 0.3)]
-        self.k_p = [[-1.3, 0.],
-                    [0., 0.7]]
-        self.k_d = [[0.7, 0.],
-                    [0., 2]]
+        self.k_p = [[-3, 0.],
+                    [0., -0.7]]
+        self.k_d = [[-0.7, 0.],
+                    [0., -2]]
         self.i = 0
 
     def choose_model(self, x, u, x_dot):
@@ -27,9 +27,6 @@ class MMAController(Controller):
         self.i = np.argmin(error)
 
         print("\nchosen model: ", self.i, "\n")
-
-
-    # TODO: ask about situations when it does not adapt quick enough? sometimes perfect, sometimes not with poly trajectory!!!
 
     def calculate_control(self, x, q_d, q_d_dot, q_d_ddot):
 
